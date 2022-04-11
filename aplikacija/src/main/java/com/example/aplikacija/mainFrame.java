@@ -41,6 +41,7 @@ public class mainFrame extends JFrame{
 
             }
         });
+
         btnClear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,6 +50,8 @@ public class mainFrame extends JFrame{
                 tfPriimek.setText("");
             }
         });
+
+        db.read_data(conn, "zaposleni");
     }
 
     public static void main(String[] args) {
