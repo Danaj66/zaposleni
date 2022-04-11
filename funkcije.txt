@@ -1,0 +1,16 @@
+--Funkcija ki kot parametre sprejme ime in priimek zaposlenega ter oddelek v katerega prihaja in spremeni oddelek zaposlenemu
+CREATE FUNCTION spremeni_oddelek_zaposlenemu (zaposlen_priimek VARCHAR(100), zaposlen_ime VARCHAR(100), oddelek varchar)
+RETURNS void AS 
+$$
+BEGIN 
+    UPDATE oddelki_zaposleni SET oddelek_id = (SELECT id FROM oddelki WHERE ime LIKE oddelek), datum_prihoda = CURRENT_TIMESTAMP
+    WHERE zaposlen_id IN (
+        SELECT z.id
+        FROM zaposleni z
+        WHERE ((lower(z.priimek) = lower(zaposlen_priimek)) AND (lower(z.ime) = lower(zaposlen_ime)))
+        );
+END;
+$$ LANGUAGE 'plpgsql';
+
+--Example
+SELECT spremeni_oddelek_zaposlenemu('Prešeren', 'France', 'Finančni oddelek');
