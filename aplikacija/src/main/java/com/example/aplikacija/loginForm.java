@@ -37,6 +37,7 @@ public class loginForm extends JFrame{
                 if (x!=0){
                     //kliče nov frame
                     displayData displaydata = new displayData(x);
+                    //mainFrame mainframe = new mainFrame();
                     dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "Prijava neuspešna!");

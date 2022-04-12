@@ -39,20 +39,59 @@ public class DbFunctions {
         }
     }
 
+    public String izpis_uporabnikov(Connection conn){
+        Statement statement;
+        ResultSet rs=null;
+        String s = "";
+        try {
+            String query="SELECT preberi_uporabnike();";
+            statement=conn.createStatement();
+            rs=statement.executeQuery(query);
+            while (rs.next()){
+                s=s+rs.getString(1);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        System.out.println(s);
+        return s;
+    }
+
+    public String izpis_zaposlenih(Connection conn){
+        Statement statement;
+        ResultSet rs=null;
+        String s = "";
+        try {
+            String query="SELECT preberi_zaposlene();";
+            statement=conn.createStatement();
+            rs=statement.executeQuery(query);
+            while (rs.next()){
+                s=s+rs.getString(1);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        System.out.println(s);
+        return s;
+    }
+
     public void read_data(Connection conn, String table_name){
         Statement statement;
         ResultSet rs=null;
+        String s = null;
+        int i = 1;
         try {
             String query="SELECT * FROM " + table_name +";";
             statement=conn.createStatement();
             rs=statement.executeQuery(query);
             while (rs.next()){
-                System.out.print(rs.getString("id")+"  ");
-                System.out.println(rs.getString("ime")+"  ");
+                s=s+rs.getString(i);
+                i++;
             }
         }catch (Exception e){
             System.out.println(e);
         }
+
     }
 
     public int prijava(Connection conn, String username, String password){
