@@ -1,12 +1,16 @@
 package com.example.aplikacija;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DbFunctions {
+
     public Connection connect_to_db(){
+
         Connection conn=null;
+
         try {
             Class.forName("org.postgresql.Driver");
             conn= DriverManager.getConnection("jdbc:postgresql://tyke.db.elephantsql.com/"+"gvoskozc", "gvoskozc", "cT8IIQPBvgYA0SuxelOpso8DwyETD0hL");
@@ -49,5 +53,24 @@ public class DbFunctions {
         }catch (Exception e){
             System.out.println(e);
         }
+    }
+
+    public int prijava(Connection conn, String username, String password){
+        Statement statement;
+        ResultSet rs=null;
+        int x = 0;
+        try {
+            String query="SELECT prijava('"+username+"', '" + password + "');";
+            System.out.println("1");
+            statement=conn.createStatement();
+            System.out.println("2");
+            rs = statement.executeQuery(query);
+            while (rs.next()){
+                x = rs.getInt(1);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return x;
     }
 }

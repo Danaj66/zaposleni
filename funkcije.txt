@@ -14,3 +14,38 @@ $$ LANGUAGE 'plpgsql';
 
 --Example
 SELECT spremeni_oddelek_zaposlenemu('Prešeren', 'France', 'Finančni oddelek');
+
+--Funkcija za prijavo
+CREATE FUNCTION prijava (username VARCHAR(100), password VARCHAR(100))
+RETURNS int AS
+$$
+DECLARE x int;
+BEGIN
+    SELECT INTO x id FROM uporabniki WHERE uporabnisko_ime = username;
+    IF (x IS NULL) THEN
+        return 0;
+    END IF;
+    IF ((SELECT geslo FROM uporabniki WHERE id = x) = password) THEN
+        return x;
+    END IF;
+END;
+$$ LANGUAGE 'plpgsql';
+
+--Example
+SELECT prijava('zanluka', 'artic');
+
+--prebere uporabnike
+CREATE FUNCTION preberi_uporabnike ()
+RETURNS TABLE(
+            id integer,
+            uporabinsko_ime character varying,
+            geslo  character varying
+        ) AS
+$$
+BEGIN
+    RETURN QUERY(SELECT * FROM uporabniki);
+END;
+$$ LANGUAGE 'plpgsql';
+
+--Example
+SELECT preberi_uporabnike();

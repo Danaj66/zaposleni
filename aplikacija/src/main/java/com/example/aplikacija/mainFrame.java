@@ -53,8 +53,4 @@ public class mainFrame extends JFrame{
 
         db.read_data(conn, "zaposleni");
     }
-
-    public static void main(String[] args) {
-        mainFrame myFrame = new mainFrame();
-    }
 }
