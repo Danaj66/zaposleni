@@ -1,6 +1,8 @@
 package com.example.aplikacija;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -8,6 +10,7 @@ import java.sql.Connection;
 public class displayData extends JFrame {
     private JPanel mainPanel;
     private JList list1;
+    private JButton btnNew;
 
     DefaultListModel listM = new DefaultListModel(){
 
@@ -25,7 +28,6 @@ public class displayData extends JFrame {
 
         String elements = db.izpis_zaposlenih(conn);
         elements=elements.replace("(", "");
-        elements=elements.replace(",", ", ");
         elements=elements.replace(")", "#");
         String[] zaposleni = elements.split("#");
 
@@ -41,6 +43,13 @@ public class displayData extends JFrame {
                 super.mouseClicked(e);
                 System.out.println(list1.getSelectedValue());
                 editFrame editframe = new editFrame(list1.getSelectedValue().toString());
+            }
+        });
+
+        btnNew.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                editFrame editframe = new editFrame("Nov uslužbenec");
             }
         });
     }

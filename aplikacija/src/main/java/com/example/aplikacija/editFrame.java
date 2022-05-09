@@ -16,6 +16,7 @@ public class editFrame extends JFrame{
     private JButton btnDelete;
     private JPanel mainPanel;
     private JTextField tfID;
+    private JButton btnAdd;
 
     public editFrame(String info){
         setContentPane(mainPanel);
@@ -27,21 +28,38 @@ public class editFrame extends JFrame{
         DbFunctions db= new DbFunctions();
         Connection conn=db.connect_to_db();
 
-        String[] zaposlen = info.split(",");
-        tfID.setText(zaposlen[0]);
-        tfIme.setText(zaposlen[1]);
-        tfPriimek.setText(zaposlen[2]);
-        tfKraj_id.setText(zaposlen[3]);
-        tfDatum_rojstva.setText(zaposlen[4]);
-        tfTelefon.setText(zaposlen[5]);
-        tfMail.setText(zaposlen[6]);
+        tfID.setEnabled(false);
+        if (info != "Nov uslužbenec")
+        {
+            String[] zaposlen = info.split(",");
+            tfID.setText(zaposlen[0]);
+            tfIme.setText(zaposlen[1]);
+            tfPriimek.setText(zaposlen[2]);
+            tfKraj_id.setText(zaposlen[3]);
+            tfDatum_rojstva.setText(zaposlen[4]);
+            tfTelefon.setText(zaposlen[5]);
+            tfMail.setText(zaposlen[6]);
+            btnAdd.setVisible(false);
+        }
+        else
+        {
+            btnEdit.setVisible(false);
+            btnDelete.setVisible(false);
+        }
+
 
         btnEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                db.uredi_zaposlenega(conn, tfID.getText(), tfIme.getText(), tfPriimek.getText(), tfKraj_id.getText(),
-                        tfTelefon.getText(), tfMail.getText());
+                        tfDatum_rojstva.getText() ,tfTelefon.getText(), tfMail.getText());
 
+
+            }
+        });
+        btnAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
             }
         });

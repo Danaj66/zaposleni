@@ -11,6 +11,7 @@ public class loginForm extends JFrame{
     private JTextField tfPassword;
     private JButton btnLogin;
     private JPanel mainPanel;
+    private JButton btnRegistration;
 
     public loginForm(){
         setContentPane(mainPanel);
@@ -36,15 +37,31 @@ public class loginForm extends JFrame{
                 System.out.println(x);
 
                 if (x!=0){
-                    //kliče nov frame
+                    try {
+                        conn.close();
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
                     displayData displaydata = new displayData(x);
-                    //mainFrame mainframe = new mainFrame();
                     dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "Prijava neuspešna!");
                 }
 
 
+            }
+        });
+        btnRegistration.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                registrationForm registrationform = new registrationForm();
+                dispose();
             }
         });
     }
