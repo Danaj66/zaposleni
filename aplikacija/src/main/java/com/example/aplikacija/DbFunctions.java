@@ -112,4 +112,16 @@ public class DbFunctions {
         }
         return x;
     }
+
+    public void uredi_zaposlenega(Connection conn, String id, String ime, String priimek, String kraj, String telefon, String mail){
+        Statement statement;
+        try {
+            String query="SELECT uredi(" +id + ", '"+ime+"', '" + priimek + "', " + kraj + ", '"+telefon+"', '"+mail+"');";
+            statement=conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Zaposleni urejen");
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
 }

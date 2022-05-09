@@ -16,7 +16,7 @@
           <text value="Ime:"/>
         </properties>
       </component>
-      <component id="5a4ab" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="5a4ab" class="javax.swing.JTextField" binding="tfIme">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -32,7 +32,7 @@
           <text value="Priimek:"/>
         </properties>
       </component>
-      <component id="f525d" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="f525d" class="javax.swing.JTextField" binding="tfPriimek">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -48,7 +48,7 @@
           <text value="Kraj_id:"/>
         </properties>
       </component>
-      <component id="88187" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+      <component id="88187" class="javax.swing.JTextField" binding="tfKraj_id">
         <constraints>
           <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -64,7 +64,7 @@
           <text value="Datum rojstva:"/>
         </properties>
       </component>
-      <component id="e38cb" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+      <component id="e38cb" class="javax.swing.JTextField" binding="tfDatum_rojstva">
         <constraints>
           <grid row="9" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -80,7 +80,7 @@
           <text value="Telefonska številka:"/>
         </properties>
       </component>
-      <component id="2e63a" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+      <component id="2e63a" class="javax.swing.JTextField" binding="tfTelefon">
         <constraints>
           <grid row="11" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -96,7 +96,7 @@
           <text value="Email:"/>
         </properties>
       </component>
-      <component id="d1b3e" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+      <component id="d1b3e" class="javax.swing.JTextField" binding="tfMail">
         <constraints>
           <grid row="13" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -128,7 +128,7 @@
           <text value="ID:"/>
         </properties>
       </component>
-      <component id="40809" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+      <component id="40809" class="javax.swing.JTextField" binding="tfID">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
