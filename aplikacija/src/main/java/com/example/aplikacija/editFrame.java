@@ -63,6 +63,12 @@ public class editFrame extends JFrame{
 
             }
         });
+        btnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                db.zbrisi_zaposlenega(conn, tfID.getText());
+            }
+        });
     }
 
 }

@@ -125,30 +125,14 @@ public class DbFunctions {
         }
     }
 
-    public void dodaj_uporabnika_old(Connection conn, String username, String password){
-        Statement statement;
-        try {
-            String query="SELECT registracija('"+username+"', '" + password + "');";
-            statement=conn.createStatement();
-            statement.executeUpdate(query);
-            System.out.println("Uporabnik dodan");
-        }catch (Exception e){
-            System.out.println(e);
-        }
-    }
-
     public int dodaj_uporabnika(Connection conn, String username, String password){
-        System.out.println("1");
         Statement statement;
         ResultSet rs=null;
         int x = 0;
         try {
             String query="SELECT registracija('"+username+"', '" + password + "');";
-            System.out.println("2");
             statement=conn.createStatement();
-            System.out.println("3");
             rs = statement.executeQuery(query);
-            System.out.println("4");
             while (rs.next()){
                 x = rs.getInt(1);
             }
@@ -156,5 +140,17 @@ public class DbFunctions {
             System.out.println(e);
         }
         return x;
+    }
+
+    public void zbrisi_zaposlenega(Connection conn, String id){
+        Statement statement;
+        try {
+            String query="SELECT delete_user(" +id + ");";
+            statement=conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Zaposleni izbrisan");
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 }
