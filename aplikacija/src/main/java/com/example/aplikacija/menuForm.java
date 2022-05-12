@@ -17,7 +17,7 @@ public class menuForm extends JFrame{
     public menuForm(int x, String username) {
         setContentPane(mainPanel);
         setTitle("Meni - " + username);
-        setSize(450, 300);
+        setSize(450, 100);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
@@ -54,6 +54,12 @@ public class menuForm extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 displayKraji displaykraji = new displayKraji(conn);
+            }
+        });
+        btnOddelki.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                displayOddelki displayoddelki = new displayOddelki(conn);
             }
         });
     }

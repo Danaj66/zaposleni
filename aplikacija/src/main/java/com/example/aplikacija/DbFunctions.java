@@ -239,4 +239,63 @@ public class DbFunctions {
             System.out.println(e);
         }
     }
+
+    public String izpis_oddelkov(Connection conn){
+        Statement statement;
+        ResultSet rs=null;
+        String s = "";
+        try {
+            String query="SELECT preberi_oddelke();";
+            statement=conn.createStatement();
+            rs=statement.executeQuery(query);
+            while (rs.next()){
+                s=s+rs.getString(1);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        System.out.println(s);
+        return s;
+    }
+
+    public void zbrisi_oddelek(Connection conn, String id){
+        Statement statement;
+        try {
+            String query="SELECT zbrisi_oddelek(" +id + ");";
+            statement=conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Oddelek izbrisan");
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void uredi_oddelek(Connection conn, String id, String ime){
+        Statement statement;
+        try {
+            String query="SELECT uredi_oddelek(" +id + ", '"+ime+ "');";
+            statement=conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Oddelek urejen");
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public int dodaj_oddelek(Connection conn, String ime){
+        Statement statement;
+        ResultSet rs=null;
+        int x = 0;
+        try {
+            String query="SELECT dodaj_oddelek('"+ime+"');";
+            statement=conn.createStatement();
+            rs = statement.executeQuery(query);
+            while (rs.next()){
+                x = rs.getInt(1);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return x;
+    }
 }

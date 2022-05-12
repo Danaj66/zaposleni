@@ -111,3 +111,50 @@ BEGIN
 END;
 $$
 LANGUAGE 'plpgsql';
+
+--prebere oddelke
+CREATE FUNCTION preberi_oddelke ()
+RETURNS TABLE(id integer, ime VARCHAR(50)) AS
+$$
+BEGIN
+    RETURN QUERY(SELECT * FROM oddelki);
+END;
+$$
+LANGUAGE 'plpgsql';
+
+--zbrise oddelek
+CREATE FUNCTION zbrisi_oddelek (o_id INTEGER)
+RETURNS VOID AS
+$$
+BEGIN
+    DELETE from oddelki_zaposleni
+    WHERE oddelek_id=o_id;
+
+    DELETE FROM oddelki
+    WHERE id=o_id;
+END;
+$$
+LANGUAGE 'plpgsql';
+
+--uredi oddelek
+CREATE FUNCTION uredi_oddelek (id_check INTEGER, ime_new VARCHAR(50))
+RETURNS VOID AS
+$$
+BEGIN
+    UPDATE oddelki
+    SET ime=ime_new
+    WHERE id=id_check;
+END;
+$$
+LANGUAGE 'plpgsql';
+
+--doda oddelek
+CREATE FUNCTION dodaj_oddelek (ime_add VARCHAR(50))
+RETURNS VOID AS
+$$
+BEGIN
+    INSERT INTO oddelki (ime)
+    VALUES (ime_add);
+END;
+$$
+LANGUAGE 'plpgsql';
