@@ -19,15 +19,15 @@ public class editFrame extends JFrame{
     private JTextField tfID;
     private JButton btnAdd;
 
-    public editFrame(String info){
+    public editFrame(Connection conn,String info){
         setContentPane(mainPanel);
         setTitle(info);
         setSize(750, 500);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
 
         DbFunctions db= new DbFunctions();
-        Connection conn=db.connect_to_db();
+        //Connection conn=db.connect_to_db();
 
         tfID.setEnabled(false);
         if (info != "Nov uslužbenec")
@@ -48,7 +48,6 @@ public class editFrame extends JFrame{
             btnDelete.setVisible(false);
         }
 
-
         btnEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,12 +61,7 @@ public class editFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 db.dodaj_zaposlenega(conn, tfIme.getText(), tfPriimek.getText(), tfKraj_id.getText(), tfDatum_rojstva.getText(), tfTelefon.getText(), tfMail.getText());
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-                displayData displaydata = new displayData();
+                displayData displaydata = new displayData(conn);
                 dispose();
             }
         });
@@ -75,12 +69,7 @@ public class editFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 db.zbrisi_zaposlenega(conn, tfID.getText());
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-                displayData displaydata = new displayData();
+                displayData displaydata = new displayData(conn);
                 dispose();
             }
         });

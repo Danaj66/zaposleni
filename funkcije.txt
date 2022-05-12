@@ -75,3 +75,39 @@ $$
 LANGUAGE 'plpgsql';
 
 DROP FUNCTION dodaj_zaposlenega;
+
+--bere kraje
+CREATE FUNCTION preberi_kraje ()
+RETURNS TABLE(id integer, postna_st integer, naziv VARCHAR(100), veliki_uporabniki VARCHAR) AS
+$$
+BEGIN
+    RETURN QUERY(SELECT * FROM kraji);
+END;
+$$
+LANGUAGE 'plpgsql';
+
+--doda kraj
+CREATE FUNCTION dodaj_kraj (postna INTEGER, name VARCHAR(100), vel_u VARCHAR)
+RETURNS VOID AS
+$$
+BEGIN
+    INSERT INTO kraji (postna_st, naziv, veliki_uporabniki)
+    VALUES (postna, name, vel_u);
+END;
+$$
+LANGUAGE 'plpgsql';
+
+--zbrise kraj
+CREATE FUNCTION zbrisi_kraj (k_id INTEGER)
+RETURNS VOID AS
+$$
+BEGIN
+    UPDATE zaposleni
+    SET kraj_id = NULL
+    WHERE kraj_id=k_id;
+
+    DELETE FROM kraji
+    WHERE id=k_id;
+END;
+$$
+LANGUAGE 'plpgsql';

@@ -75,6 +75,24 @@ public class DbFunctions {
         return s;
     }
 
+    public String izpis_krajev(Connection conn){
+        Statement statement;
+        ResultSet rs=null;
+        String s = "";
+        try {
+            String query="SELECT preberi_kraje();";
+            statement=conn.createStatement();
+            rs=statement.executeQuery(query);
+            while (rs.next()){
+                s=s+rs.getString(1);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        System.out.println(s);
+        return s;
+    }
+
     public void read_data(Connection conn, String table_name){
         Statement statement;
         ResultSet rs=null;
@@ -181,5 +199,32 @@ public class DbFunctions {
         }catch (Exception e){
             System.out.println(e);
         }
+    }
+    public void zbrisi_kraj(Connection conn, String id){
+        Statement statement;
+        try {
+            String query="SELECT zbrisi_kraj(" +id + ");";
+            statement=conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Kraj izbrisan");
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+    public int dodaj_kraj(Connection conn, String postna, String name, String vel_u){
+        Statement statement;
+        ResultSet rs=null;
+        int x = 0;
+        try {
+            String query="SELECT dodaj_kraj("+postna+", '"+name+"', '"+vel_u+"');";
+            statement=conn.createStatement();
+            rs = statement.executeQuery(query);
+            while (rs.next()){
+                x = rs.getInt(1);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return x;
     }
 }
