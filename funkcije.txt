@@ -61,3 +61,17 @@ BEGIN
 END;
 $$
 LANGUAGE 'plpgsql';
+
+
+--brisi uporabnika
+CREATE FUNCTION brisi_uporabnika (user_id INTEGER)
+RETURNS VOID AS
+$$
+BEGIN
+    DELETE FROM uporabniki
+    WHERE id = user_id;
+END;
+$$
+LANGUAGE 'plpgsql';
+
+DROP FUNCTION dodaj_zaposlenega;

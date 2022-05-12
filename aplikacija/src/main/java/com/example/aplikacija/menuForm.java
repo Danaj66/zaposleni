@@ -28,5 +28,13 @@ public class menuForm extends JFrame{
                 dispose();
             }
         });
+        btnDeleteUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                db.zbrisi_uporabnika(conn, String.valueOf(x));
+                loginForm loginForm = new loginForm();
+                dispose();
+            }
+        });
     }
 }

@@ -170,4 +170,16 @@ public class DbFunctions {
         }
         return x;
     }
+
+    public void zbrisi_uporabnika(Connection conn, String id){
+        Statement statement;
+        try {
+            String query="SELECT brisi_uporabnika(" +id + ");";
+            statement=conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Uporabnik izbrisan");
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
 }
