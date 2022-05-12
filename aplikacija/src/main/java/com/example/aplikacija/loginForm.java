@@ -42,7 +42,8 @@ public class loginForm extends JFrame{
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
-                    displayData displaydata = new displayData();
+                    menuForm menuform = new menuForm(x, username);
+                    //displayData displaydata = new displayData();
                     dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "Prijava neuspešna!");
