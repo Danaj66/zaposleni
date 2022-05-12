@@ -41,16 +41,12 @@ public class editKraji extends JFrame {
             btnDelete.setVisible(false);
         }
 
-        /*
         btnEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                db.uredi_zaposlenega(conn, tfID.getText(), tfIme.getText(), tfPriimek.getText(), tfKraj_id.getText(),
-                        tfDatum_rojstva.getText() ,tfTelefon.getText(), tfMail.getText());
+                db.uredi_kraj(conn, tfID.getText(), tfPostna_st.getText(), tfNaziv.getText(), tfVel_upor.getText());
             }
         });
-
-         */
 
         btnAdd.addActionListener(new ActionListener() {
             @Override

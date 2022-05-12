@@ -227,4 +227,16 @@ public class DbFunctions {
         }
         return x;
     }
+
+    public void uredi_kraj(Connection conn, String id, String postna, String name, String vel_up){
+        Statement statement;
+        try {
+            String query="SELECT uredi_kraj(" +id + ", "+postna+ ", '" + name + "', '"+vel_up+"');";
+            statement=conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Kraj urejen");
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
 }
