@@ -158,3 +158,24 @@ BEGIN
 END;
 $$
 LANGUAGE 'plpgsql';
+
+--zaposleni log
+CREATE TABLE arhiv_zaposlenih (LIKE zaposleni INCLUDING ALL);
+ALTER TABLE arhiv_zaposlenih
+ADD COLUMN datum_spremembe TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN zaposlen_id INTEGER NOT NULL;
+
+CREATE OR REPLACE FUNCTION arhiviraj_zaposleni()
+RETURNS TRIGGER AS $$
+DECLARE
+BEGIN
+INSERT INTO arhiv_zaposlenih (ime, priimek, kraj_id, datum_rojstva, "telefonska_St", email, zaposlen_id)
+VALUES (old.ime, old.priimek, old.kraj_id, old.datum_rojstva, old."telefonska_St", old.email, old.id);
+RETURN NEW;
+END;
+$$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER arhiv_zaposleni
+BEFORE UPDATE OR DELETE
+ON zaposleni
+FOR EACH ROW EXECUTE PROCEDURE arhiviraj_zaposleni();
