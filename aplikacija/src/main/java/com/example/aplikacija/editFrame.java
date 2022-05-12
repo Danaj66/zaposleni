@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public class editFrame extends JFrame{
     private JTextField tfIme;
@@ -60,13 +61,27 @@ public class editFrame extends JFrame{
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                db.dodaj_zaposlenega(conn, tfIme.getText(), tfPriimek.getText(), tfKraj_id.getText(), tfDatum_rojstva.getText(), tfTelefon.getText(), tfMail.getText());
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                displayData displaydata = new displayData();
+                dispose();
             }
         });
         btnDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 db.zbrisi_zaposlenega(conn, tfID.getText());
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                displayData displaydata = new displayData();
+                dispose();
             }
         });
     }

@@ -49,3 +49,15 @@ $$ LANGUAGE 'plpgsql';
 
 --Example
 SELECT preberi_uporabnike();
+
+--dodaj zaposlenega
+
+CREATE FUNCTION dodaj_zaposlenega (name VARCHAR(20), surname VARCHAR(30), kraj INTEGER, datum_r TIMESTAMP, telefon VARCHAR, mail VARCHAR(50))
+RETURNS VOID AS
+$$
+BEGIN
+    INSERT INTO zaposleni (ime, priimek, kraj_id, datum_rojstva, "telefonska_St", email)
+    VALUES (name, surname, kraj, datum_r, telefon, mail);
+END;
+$$
+LANGUAGE 'plpgsql';

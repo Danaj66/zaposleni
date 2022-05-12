@@ -16,7 +16,7 @@ public class displayData extends JFrame {
 
     };
 
-    public displayData(Integer x){
+    public displayData(){
         setContentPane(mainPanel);
         setTitle("Zaposleni");
         setSize(750, 300);

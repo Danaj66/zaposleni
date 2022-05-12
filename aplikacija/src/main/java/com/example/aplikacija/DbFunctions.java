@@ -153,4 +153,21 @@ public class DbFunctions {
             System.out.println(e);
         }
     }
+
+    public int dodaj_zaposlenega(Connection conn, String ime, String priimek, String kraj, String datum_r, String telefon, String mail){
+        Statement statement;
+        ResultSet rs=null;
+        int x = 0;
+        try {
+            String query="SELECT  dodaj_zaposlenega('"+ime+"', '"+priimek+"', "+kraj+", '"+datum_r+"', '"+telefon+"', '"+mail+"');";
+            statement=conn.createStatement();
+            rs = statement.executeQuery(query);
+            while (rs.next()){
+                x = rs.getInt(1);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return x;
+    }
 }
