@@ -29,6 +29,7 @@ public class displayOddelki extends JFrame{
         String elements = db.izpis_oddelkov(conn);
         elements = elements.replace("(", "");
         elements = elements.replace(")", "#");
+        elements = elements.replace("\"", "");
         String[] oddelki = elements.split("#");
 
         for (String i : oddelki) {

@@ -27,10 +27,10 @@ public class DbFunctions {
         return conn;
     }
 
-    public void spremeni_oddelek_zaposlenemu(Connection conn, String priimek, String ime, String oddelek){
+    public void spremeni_oddelek_zaposlenemu(Connection conn, String za_id, String od_id){
         Statement statement;
         try {
-            String query="SELECT spremeni_oddelek_zaposlenemu('"+priimek+"', '" + ime + "', '" + oddelek + "');";
+            String query="SELECT spremeni_oddelek_zaposlenemu("+za_id + ", "+od_id+");";
             statement=conn.createStatement();
             statement.executeUpdate(query);
             System.out.println("Oddelek spremenjen");

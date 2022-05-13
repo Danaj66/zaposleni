@@ -29,6 +29,7 @@ public class displayData extends JFrame {
         String elements = db.izpis_zaposlenih(conn);
         elements=elements.replace("(", "");
         elements=elements.replace(")", "#");
+        elements = elements.replace("\"", "");
         String[] zaposleni = elements.split("#");
 
         for (String i : zaposleni) {

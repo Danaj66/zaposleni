@@ -13,6 +13,7 @@ public class menuForm extends JFrame{
     private JButton btnZaposleni;
     private JButton btnKraji;
     private JButton btnOddelki;
+    private JButton btnOddelekZaposleni;
 
     public menuForm(int x, String username) {
         setContentPane(mainPanel);
@@ -60,6 +61,12 @@ public class menuForm extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 displayOddelki displayoddelki = new displayOddelki(conn);
+            }
+        });
+        btnOddelekZaposleni.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainFrame mainframe = new mainFrame(conn);
             }
         });
     }

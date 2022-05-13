@@ -29,6 +29,7 @@ public class displayKraji extends JFrame{
         String elements = db.izpis_krajev(conn);
         elements = elements.replace("(", "");
         elements = elements.replace(")", "#");
+        elements = elements.replace("\"", "");
         String[] kraji = elements.split("#");
 
         for (String i : kraji) {
